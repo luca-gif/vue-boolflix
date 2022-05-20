@@ -30,10 +30,10 @@ export default {
       moviesParams: {
         api_key: '83c397b63c322fd6a37d6c5ec3d5f6de',
         language: 'it-IT',
-        query: 'harry potter',
+        query: '',
         films: [],
       },
-        filmCercato: '',
+       
     }
   },
 
@@ -44,13 +44,14 @@ export default {
       } )
       .then(r =>{
         this.films = r.data.results;
-        console.log(this.films)
+        //console.log(this.films)
       })
     },
 
     valorePassato(nomeValore){
-      this.query = nomeValore;
-      console.log(this.query);
+      this.moviesParams.query = nomeValore;
+      this.apiMovies()
+      console.log(this.moviesParams.query);
     },
 
   },
