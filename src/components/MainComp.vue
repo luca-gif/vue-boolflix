@@ -1,12 +1,28 @@
 <template>
   <div>
+    
+    <div v-for="film in arrayFilms" :key="film.id">
+      <show-movies
+      :titolo="film.title"
+      :titoloOriginale="film.original_title"
+      :lingua="film.language"
+      :voto="film.vote_count"
+      />
+    </div>
 
   </div>
 </template>
 
 <script>
+import ShowMovies from './ShowMovies.vue';
+
 export default {
-  name: 'MainComp'
+  components: { ShowMovies },
+  name: 'MainComp',
+
+   props:{
+    arrayFilms: Array
+  },
 }
 </script>
 
