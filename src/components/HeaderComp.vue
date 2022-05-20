@@ -9,12 +9,12 @@
         <h5>Film</h5>
       </div>
 
-      <div class="search">
-
-        <input @keyup.enter="$emit('elementoCercato', ricerca)" v-model.trim="ricerca" class="form-control w-50 d-inline-block mx-2"  type="text">
+      <div class="search w-25 d-flex">
+        <input @keyup.enter="$emit('elementoCercato', ricerca)" v-model.trim="ricerca" class="form-control d-inline-block mx-2"  type="text">
         <button @click="$emit('elementoCercato', ricerca)" class="btn btn-danger d-inline-block text-black">Search</button>
-
       </div>
+
+      
     </header>
 </template>
 
@@ -33,6 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 
+
+
 header{
   height: 80px;
   background-color: black;
@@ -41,6 +43,11 @@ header{
     width: 140px;
     cursor: pointer;
   }
+
+    input{
+    background-color: rgb(228, 228, 228);
+  }
+  
   .categoria{
     color: rgb(201, 201, 201);
     h5{

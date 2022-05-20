@@ -37,7 +37,6 @@ export default {
     }
   },
   
-
   methods:{
     apiMovies(){
       axios.get(this.moviesUrl, {
@@ -51,7 +50,7 @@ export default {
 
     valorePassato(nomeValore){
       this.moviesParams.query = nomeValore;
-      this.apiMovies()
+      this.apiMovies();
       console.log(this.moviesParams.query);
     },
 
