@@ -31,11 +31,12 @@ export default {
         api_key: '83c397b63c322fd6a37d6c5ec3d5f6de',
         language: 'it-IT',
         query: '',
-        films: [],
       },
+      films: [],
        
     }
   },
+  
 
   methods:{
     apiMovies(){
@@ -44,7 +45,7 @@ export default {
       } )
       .then(r =>{
         this.films = r.data.results;
-        //console.log(this.films)
+        console.log(this.films)
       })
     },
 
@@ -56,9 +57,7 @@ export default {
 
   },
 
-  mounted() {
-    this.apiMovies()
-  },
+ 
 }
 </script>
 
