@@ -1,14 +1,21 @@
 <template>
-  <div>
 
-    <div class="search d-flex py-4 justify-content-center">
+    <header class="d-flex justify-content-between align-items-center">
 
-    <input @keyup.enter="$emit('elementoCercato', ricerca)" v-model.trim="ricerca" class="form-control w-25  mx-2" type="text">
-    <button @click="$emit('elementoCercato', ricerca)" class="btn btn-danger text-black">Search</button>
+      <div class="logo"><img src="../assets/img/Boolflix.png" alt=""></div>
 
-    </div>
+      <div class="categoria d-flex">
+        <h5>Serie Tv</h5>
+        <h5>Film</h5>
+      </div>
 
-  </div>
+      <div class="search">
+
+        <input @keyup.enter="$emit('elementoCercato', ricerca)" v-model.trim="ricerca" class="form-control w-50 d-inline-block mx-2"  type="text">
+        <button @click="$emit('elementoCercato', ricerca)" class="btn btn-danger d-inline-block text-black">Search</button>
+
+      </div>
+    </header>
 </template>
 
 <script>
@@ -25,6 +32,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+header{
+  height: 80px;
+  background-color: black;
+  padding: 0 20px;
+  img{
+    width: 140px;
+    cursor: pointer;
+  }
+  .categoria{
+    color: rgb(201, 201, 201);
+    h5{
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
+}
 
 
 

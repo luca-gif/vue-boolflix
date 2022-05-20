@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
 
     <header-comp @elementoCercato="valorePassato" />
     
@@ -64,6 +64,8 @@ export default {
 <style lang="scss">
 @import './assets/style/global';
 
-
+body{
+  background-color: rgb(28, 28, 28);
+}
 
 </style>

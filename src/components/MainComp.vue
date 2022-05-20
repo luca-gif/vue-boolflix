@@ -8,6 +8,7 @@
       :titoloOriginale="film.original_title"
       :lingua="film.original_language"
       :voto="film.vote_count"
+      :image="film.poster_path"
       />
     </div>
 
@@ -27,6 +28,9 @@ export default {
 }
 </script>
 
+
 <style lang="scss" scoped>
+
+
 
 </style>
