@@ -1,11 +1,12 @@
 <template>
   <div>
-    
+      
     <div v-for="film in arrayFilms" :key="film.id">
+    
       <show-movies
       :titolo="film.title"
       :titoloOriginale="film.original_title"
-      :lingua="film.language"
+      :lingua="film.original_language"
       :voto="film.vote_count"
       />
     </div>

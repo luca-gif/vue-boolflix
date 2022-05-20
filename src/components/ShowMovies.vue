@@ -1,10 +1,10 @@
 <template>
   <div>
     
-    <h3>{{titolo}}</h3>
-    <p>{{titoloOriginale}}</p>
-    <p>{{lingua}}</p>
-    <p>{{voto}}</p>
+    <h3>Titolo: {{titolo}}</h3>
+    <p>Titolo originale: {{titoloOriginale}}</p>
+    <p>Lingua: {{lingua}}</p>
+    <p>Voto: {{voto}}</p>
 
   </div>
 </template>

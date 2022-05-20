@@ -32,8 +32,8 @@ export default {
         language: 'it-IT',
         query: 'harry potter',
         films: [],
+      },
         filmCercato: '',
-      }
     }
   },
 
@@ -49,8 +49,8 @@ export default {
     },
 
     valorePassato(nomeValore){
-      this.filmCercato = nomeValore;
-      console.log(this.filmCercato);
+      this.query = nomeValore;
+      console.log(this.query);
     },
 
   },
