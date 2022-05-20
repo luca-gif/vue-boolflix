@@ -1,11 +1,17 @@
 <template>
   <div>
 
+    <div v-if="isLoaded">
     <header-comp @elementoCercato="valorePassato" />
     
     <main-comp
     :arrayFilms="films"
     />
+    </div>
+
+    <div v-else class="loading">
+      
+    </div>
 
   </div>
 </template>
@@ -33,6 +39,7 @@ export default {
         query: '',
       },
       films: [],
+      isLoaded: false,
        
     }
   },
@@ -54,17 +61,27 @@ export default {
       console.log(this.moviesParams.query);
     },
 
+    loadIsTrue(){
+    this.isLoaded = true
+    }
+
   },
 
- 
+  mounted(){
+    setTimeout(this.loadIsTrue,2000)
+  }
+
 }
 </script>
 
 <style lang="scss">
-@import './assets/style/global';
+  @import './assets/style/global';
 
-body{
-  background-color: rgb(28, 28, 28);
-}
+  .loading{
+    background-image: url(./assets/img/netflix-title_1.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
 
 </style>
