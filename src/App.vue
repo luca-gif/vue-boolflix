@@ -10,7 +10,7 @@
     </div>
 
     <div v-else class="loading">
-      
+      <audio autoplay src="./assets/Sound/Netflix-Intro-Sound-Effect.mp3" type="audio/mpeg"></audio>
     </div>
 
   </div>
@@ -68,7 +68,7 @@ export default {
   },
 
   mounted(){
-    setTimeout(this.loadIsTrue,2000)
+    setTimeout(this.loadIsTrue,3000)
   }
 
 }
@@ -78,7 +78,7 @@ export default {
   @import './assets/style/global';
 
   .loading{
-    background-image: url(./assets/img/netflix-title_1.jpg);
+    background-image: url(./assets/img/thibault-penin-AWOl7qqsffM-unsplash.jpg);
     background-position: center;
     background-size: cover;
     height: 100vh;
