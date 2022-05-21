@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'ShowMovies',
+  name: 'ShowPopularMovies',
   props:{
     titolo: String,
     titoloOriginale: String,
@@ -56,7 +56,7 @@ export default {
 
   img{
     border-radius: 10px;
-    width: 120px;
+    width: 100px;
     transition: all .5s;
     cursor: pointer;
     

@@ -3,10 +3,12 @@
 
     <div v-if="isLoaded">
     <header-comp @elementoCercato="valorePassato" />
-    
-    <main-comp
-    :arrayFilms="films"
-    />
+
+           <main-comp
+           :arrayFilms="films"
+           :arrayPopularFilms="popularFilms"
+          />
+
     </div>
 
     <div v-else class="loading">
@@ -33,18 +35,24 @@ export default {
   data(){
     return{
       moviesUrl: 'https://api.themoviedb.org/3/search/movie',
+      popularMoviesUrl:'https://api.themoviedb.org/3/movie/popular?api_key=83c397b63c322fd6a37d6c5ec3d5f6de',
       moviesParams: {
         api_key: '83c397b63c322fd6a37d6c5ec3d5f6de',
         language: 'it-IT',
         query: '',
       },
+      
       films: [],
+      popularFilms: [],
       isLoaded: false,
        
     }
   },
   
   methods:{
+
+    /* Chiamata per i films */
+
     apiMovies(){
       axios.get(this.moviesUrl, {
         params: this.moviesParams
@@ -52,6 +60,16 @@ export default {
       .then(r =>{
         this.films = r.data.results;
         console.log(this.films)
+      })
+    },
+
+    /* Chiamata per i film piu popolari */
+
+    popularMovies(){
+      axios.get(this.popularMoviesUrl)
+      .then(r =>{
+        this.popularFilms = r.data.results;
+        console.log(this.popularFilms)
       })
     },
 
@@ -63,12 +81,13 @@ export default {
 
     loadIsTrue(){
     this.isLoaded = true
-    }
+    },
 
   },
 
   mounted(){
     setTimeout(this.loadIsTrue,3000)
+    this.popularMovies()
   }
 
 }
@@ -82,6 +101,8 @@ export default {
     background-position: center;
     background-size: cover;
     height: 100vh;
+
   }
+    
 
 </style>
