@@ -13,7 +13,7 @@
         
         <div class="text px-4 d-flex flex-column">
 
-            <h5>{{titolo}}</h5>
+            <h6>{{titolo}}</h6>
             <p>Titolo originale: {{titoloOriginale}}</p>
             <p>Lingua: {{lingua}}</p>
             <p>Voto: {{voto}}</p>
@@ -57,7 +57,7 @@ export default {
   img{
     border-radius: 10px;
     width: 100px;
-    transition: all .5s;
+    transition: all .4s;
     cursor: pointer;
     
     &:hover{
@@ -67,7 +67,7 @@ export default {
 
 .text{
   color: rgb(186, 186, 186);
-  font-size: .8rem;
+  font-size: .7rem;
 }
 
 </style>

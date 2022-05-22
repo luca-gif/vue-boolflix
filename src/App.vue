@@ -8,7 +8,7 @@
            :arrayFilms="films"
            :arrayPopularFilms="popularFilms"
           />
-
+        
     </div>
 
     <div v-else class="loading">
@@ -51,7 +51,7 @@ export default {
   
   methods:{
 
-    /* Chiamata per i films */
+    /* Chiamata per i film */
 
     apiMovies(){
       axios.get(this.moviesUrl, {
@@ -86,7 +86,7 @@ export default {
   },
 
   mounted(){
-    setTimeout(this.loadIsTrue,3000)
+    setTimeout(this.loadIsTrue,4000)
     this.popularMovies()
   }
 
@@ -101,8 +101,7 @@ export default {
     background-position: center;
     background-size: cover;
     height: 100vh;
-
   }
-    
 
+    
 </style>

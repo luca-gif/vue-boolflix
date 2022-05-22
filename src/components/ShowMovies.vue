@@ -10,10 +10,9 @@
           </div>
 
         
-        
         <div class="text px-4 d-flex flex-column">
 
-            <h5>{{titolo}}</h5>
+            <h6>{{titolo}}</h6>
             <p>Titolo originale: {{titoloOriginale}}</p>
             <p>Lingua: {{lingua}}</p>
             <p>Voto: {{voto}}</p>
@@ -21,11 +20,7 @@
         </div>
 
         </div>
-
-
     </div>
-   
-
   </div>
 </template>
 
@@ -57,7 +52,7 @@ export default {
   img{
     border-radius: 10px;
     width: 120px;
-    transition: all .5s;
+    transition: all .4s;
     cursor: pointer;
     
     &:hover{
@@ -67,7 +62,7 @@ export default {
 
 .text{
   color: rgb(186, 186, 186);
-  font-size: .8rem;
+  font-size: .7rem;
 }
 
 </style>

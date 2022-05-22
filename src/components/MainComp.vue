@@ -4,7 +4,6 @@
      <h3 class="text-danger px-5 pt-4">Most Popular</h3>
      <div class="films popular-films py-3 d-flex">
 
-
     <div v-for="popularFilm in arrayPopularFilms" class="most-popular" :key="popularFilm.id">
 
       <ShowPopularMovies
@@ -60,6 +59,27 @@ export default {
     width: 95%;
     margin: auto;
     overflow-x: auto;
+    margin-bottom: 40px;
   }
+
+  ::-webkit-scrollbar {
+    height: .5em;
+  }
+
+  ::-webkit-scrollbar-track{
+     background: rgb(50, 50, 50);
+     border-radius: 5px;
+  }
+
+   ::-webkit-scrollbar-thumb{
+      background: hsl(0, 100%, 32%);
+      border: .05em solid rgb(72, 72, 72);
+      border-radius: 5px;
+   }
+
+     ::-webkit-scrollbar-thumb:hover{
+      background: hsl(0, 100%, 35%);    
+   }
+
 
 </style>
