@@ -15,8 +15,8 @@
 
             <h6>{{titolo}}</h6>
             <p>Titolo originale: {{titoloOriginale}}</p>
-            <p v-if="lingua === 'it'">Lingua: <img src="../assets/img/Flag_of_Italy.svg.png" alt="UK flag"> </p>
-            <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="../assets/img/uk.png" alt="UK flag"> </p>
+            <p v-if="lingua === 'it'"><img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
+            <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
             <p v-else> Lingua: {{lingua}}</p>
             <p>Voto: {{voto}}</p>
 
@@ -74,11 +74,6 @@ export default {
   color: rgb(186, 186, 186);
   font-size: .7rem;
 
-  img{
-    width: 30px;
-    height: 20px;
-    border-radius: 2px;
-  }
 }
 
 </style>
