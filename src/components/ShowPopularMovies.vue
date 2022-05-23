@@ -15,7 +15,9 @@
 
             <h6>{{titolo}}</h6>
             <p>Titolo originale: {{titoloOriginale}}</p>
-            <p>Lingua: {{lingua}}</p>
+            <p v-if="lingua === 'it'">Lingua: <img src="../assets/img/Flag_of_Italy.svg.png" alt="UK flag"> </p>
+            <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="../assets/img/uk.png" alt="UK flag"> </p>
+            <p v-else> Lingua: {{lingua}}</p>
             <p>Voto: {{voto}}</p>
 
         </div>
@@ -54,7 +56,9 @@ export default {
   padding-left: 10px;
   }
 
-  img{
+  .poster{
+
+    img{
     border-radius: 10px;
     width: 100px;
     transition: all .4s;
@@ -63,11 +67,18 @@ export default {
     &:hover{
       scale: 105%;
   }
+  }
 }
 
 .text{
   color: rgb(186, 186, 186);
   font-size: .7rem;
+
+  img{
+    width: 30px;
+    height: 20px;
+    border-radius: 2px;
+  }
 }
 
 </style>

@@ -10,8 +10,8 @@
       </div>
 
       <div class="search w-25 d-flex">
-        <input @keyup.enter="$emit('elementoCercato', ricerca)" v-model.trim="ricerca" class="form-control d-inline-block mx-2"  type="text">
-        <button @click="$emit('elementoCercato', ricerca)" class="btn btn-danger d-inline-block text-black">Search</button>
+        <input @keyup.enter="ricercaValore()" v-model.trim="ricerca" class="form-control d-inline-block mx-2"  type="text">
+        <button @click="ricercaValore()" class="btn btn-danger d-inline-block text-black">Search</button>
       </div>
 
       
@@ -26,6 +26,12 @@ export default {
   data(){
     return{
       ricerca: ''
+    }
+  },
+  methods:{
+    ricercaValore(){
+      this.$emit('elementoCercato', this.ricerca);
+      this.ricerca = '';
     }
   }
 }

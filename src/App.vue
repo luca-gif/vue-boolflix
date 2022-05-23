@@ -44,7 +44,7 @@ export default {
       
       films: [],
       popularFilms: [],
-      isLoaded: false,
+      isLoaded: true, //Cambiare in false
        
     }
   },
