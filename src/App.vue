@@ -43,6 +43,7 @@ export default {
   data(){
     return{
       popularMoviesUrl:'https://api.themoviedb.org/3/trending/movie/week?api_key=83c397b63c322fd6a37d6c5ec3d5f6de',
+
       moviesUrl: 'https://api.themoviedb.org/3/search/',
       type: '',
       moviesParams: {
@@ -53,7 +54,7 @@ export default {
       films: [],
       tvSeries: [],
       popularFilms: [],
-      isLoaded: true, //Cambiare in false
+      isLoaded: false, //Cambiare in false
     }
   },
   
