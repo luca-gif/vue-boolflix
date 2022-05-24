@@ -1,30 +1,27 @@
 <template>
   <div>
 
-     <!-- <h3 class="text-danger px-5 pt-4">Most Popular</h3> -->
-     <div class="films popular-films py-3 d-flex">
+    <div class="films popular-films d-flex">
 
-    <div v-for="popularFilm in arrayPopularFilms" class="most-popular" :key="popularFilm.id">
+      <div v-for="popularFilm in arrayPopularFilms" class="most-popular" :key="popularFilm.id">
 
-      <ShowPopularMovies
-      :titolo="popularFilm.title"
-      :titoloOriginale="popularFilm.original_title"
-      :lingua="popularFilm.original_language"
-      :voto="popularFilm.vote_average"
-      :image="popularFilm.poster_path"
-      />
+        <ShowPopularMovies
+        :titolo="popularFilm.title"
+        :titoloOriginale="popularFilm.original_title"
+        :lingua="popularFilm.original_language"
+        :voto="popularFilm.vote_average"
+        :image="popularFilm.poster_path"
+        />
 
+      </div>
     </div>
-
-  </div>
       
-      
-    <div class="films searched-films py-3 d-flex">
-      
+    <div class="films searched-films d-flex">
+        
+        <!-- Ciclo Films -->
         <div v-for="film in arrayFilms" :key="film.id">
       
         <show-movies
-        :type="type"
         :titolo="film.title"
         :titoloOriginale="film.original_title"
         :lingua="film.original_language"
@@ -32,13 +29,14 @@
         :image="film.poster_path"
         />
 
-      </div>
-
+       </div>
+    </div>
+      
+    <div class="films searched-Tv d-flex">
       <!-- Ciclo Serie Tv -->
-      <div v-for="serieTv in arrayTv" :key="serieTv.id">
+       <div v-for="serieTv in arrayTv" :key="serieTv.id">
       
         <show-movies
-        :type="type"
         :titoloTv="serieTv.name"
         :titoloOriginaleTv="serieTv.original_name"
         :linguaTv="serieTv.original_language"
@@ -49,7 +47,6 @@
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -64,7 +61,6 @@ export default {
     arrayFilms: Array,
     arrayPopularFilms: Array,
     arrayTv: Array,
-    type: String
   },
 }
 </script>
@@ -76,7 +72,7 @@ export default {
     width: 95%;
     margin: auto;
     overflow-x: auto;
-    margin-bottom: 40px;
+    padding-bottom: 1rem;
   }
 
   ::-webkit-scrollbar {

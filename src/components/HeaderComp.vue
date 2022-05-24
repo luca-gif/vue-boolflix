@@ -1,6 +1,6 @@
 <template>
 
-    <header class="d-flex justify-content-between align-items-center">
+    <header class="d-flex justify-content-between align-items-center mb-5">
 
       <div class="logo"><img src="../assets/img/Boolflix.png" alt=""></div>
 
@@ -11,7 +11,7 @@
       </div>
 
       <div class="search w-25 d-flex">
-        <input @keyup.enter="ricercaValore()" v-model.trim="ricerca" class="form-control d-inline-block mx-2"  type="text">
+        <input @keyup.enter="ricercaValore()" v-model.trim="ricerca" class="form-control d-inline-block mx-2" type="text">
         <button @click="ricercaValore()" class="btn btn-danger d-inline-block text-black">Search</button>
       </div>
 
@@ -36,7 +36,6 @@ export default {
 
     cambioTipo(parametro){
       this.$emit('passoValore', parametro )
-      console.log(parametro)
     }
   }
 }
@@ -65,7 +64,5 @@ header{
     }
   }
 }
-
-
 
 </style>

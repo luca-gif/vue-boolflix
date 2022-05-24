@@ -2,46 +2,47 @@
   <div>
 
     <div v-if="isLoaded">
-    <header-comp @passoValore="type = parametro" @elementoCercato="valorePassato" />
+    <header-comp @passoValore="passoValore" @elementoCercato="valorePassato" />
 
            <main-comp
-           :arrayPopularFilms="popularFilms"
+           :arrayPopularFilms="popularFilms"  
+           />
+
+           <main-comp v-if="films.length > 0"
            :arrayFilms="films"
-           :type="type"
            />
         
-           <main-comp
+           <main-comp v-if="tvSeries.length > 0"
            :arrayTv="tvSeries"
-           :type="type"
            />
 
     </div>
+
 
     <div v-else class="loading">
       <audio autoplay src="./assets/Sound/Netflix-Intro-Sound-Effect.mp3" type="audio/mpeg"></audio>
     </div>
 
+
+
   </div>
 </template>
 
 <script>
-
 import axios from 'axios'
 import HeaderComp from './components/HeaderComp.vue'
 import MainComp from './components/MainComp.vue'
-
 
 export default {
   name: 'App',
   components: {
     HeaderComp,
-    MainComp
+    MainComp,
   },
 
   data(){
     return{
-      popularMoviesUrl:'https://api.themoviedb.org/3/movie/popular?api_key=83c397b63c322fd6a37d6c5ec3d5f6de',
-
+      popularMoviesUrl:'https://api.themoviedb.org/3/trending/movie/week?api_key=83c397b63c322fd6a37d6c5ec3d5f6de',
       moviesUrl: 'https://api.themoviedb.org/3/search/',
       type: '',
       moviesParams: {
@@ -49,7 +50,6 @@ export default {
         language: 'it-IT',
         query: '',
       },
-      
       films: [],
       tvSeries: [],
       popularFilms: [],
@@ -58,7 +58,10 @@ export default {
   },
   
   methods:{
-
+    passoValore(type){
+      this.type = type;
+      this.apiMovies(type);
+    },
     apiMovies(type){
           axios.get(this.moviesUrl + type, {
           params: this.moviesParams
@@ -73,7 +76,6 @@ export default {
           console.log(this.tvSeries)
           }
         })
-                
     },
 
     /* Chiamata per i film piu popolari */
@@ -88,16 +90,20 @@ export default {
 
     valorePassato(nomeValore){
       this.moviesParams.query = nomeValore;
-      this.apiMovies('movie');
-      this.apiMovies('tv');
-    },
+      console.log(this.type)
 
-  
+      if(this.type === ''){
+        this.apiMovies('movie');
+        this.apiMovies('tv');
+      }else{
+        this.apiMovies(this.type);
+      }
+    },
+ 
 
     loadIsTrue(){
     this.isLoaded = true
     },
-
   },
 
   mounted(){

@@ -6,27 +6,24 @@
         <div class="lm-card d-flex align-items-center">
 
           <div class="poster">
-            <img :src="`https://image.tmdb.org/t/p/w200${image}`" alt="">  
+            <img :src="`https://image.tmdb.org/t/p/w200${image}`" :alt="titolo">  
           </div>
+    
+          <div class="text px-4 d-flex flex-column">
 
-        
-        
-        <div class="text px-4 d-flex flex-column">
+              <h6>{{titolo}}</h6>
+              <p>Titolo originale: {{titoloOriginale}}</p>
 
-            <h6>{{titolo}}</h6>
-            <p>Titolo originale: {{titoloOriginale}}</p>
-
-            <p v-if="lingua === 'it'"><img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
-            <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
-            <p v-else> Lingua: {{lingua}}</p>
-            
-            <p>Voto: {{voto}}</p>
-
+              <p v-if="lingua === 'it'"><img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
+              <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
+              <p v-else> Lingua: {{lingua}}</p>
+              
+              <span v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
+              <span v-for="emptyStar in 5 - calcolaVoto()" :key="emptyStar"><i class="fa-regular fa-star"></i></span>
+              
+              
+          </div>
         </div>
-
-        </div>
-
-
     </div>
    
 
@@ -42,7 +39,20 @@ export default {
     lingua: String,
     voto: Number,
     image: String
+  },
+
+  data(){
+    return{
+      star: '<i class="fa-solid fa-star"></i>'
+    }
+  },
+  methods:{
+    calcolaVoto(){
+      return Math.round(this.voto / 2)
+    }
   }
+
+   
 }
 </script>
 
@@ -66,9 +76,9 @@ export default {
     transition: all .4s;
     cursor: pointer;
     
-    &:hover{
-      scale: 105%;
-  }
+      &:hover{
+        scale: 105%;
+    }
   }
 }
 

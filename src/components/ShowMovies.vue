@@ -6,7 +6,7 @@
         <div class="lm-card d-flex align-items-center">
 
           <div class="poster">
-            <img :src="`https://image.tmdb.org/t/p/w200${image || imageTv}`" alt="">  
+            <img :src="`https://image.tmdb.org/t/p/w200${image || imageTv}`" :alt="titolo || titoloTv">  
           </div>
 
           <div class="text px-4 d-flex flex-column">
@@ -19,6 +19,7 @@
               <p v-else> Lingua: {{lingua || linguaTv}}</p>
               
               <p>Voto: {{voto || votoTv}}</p>
+              
 
           </div>
         </div>
@@ -30,7 +31,7 @@
 export default {
   name: 'ShowMovies',
   props:{
-    type: String,
+    
     /*  */
     titolo: String,
     titoloOriginale: String,
@@ -63,7 +64,7 @@ export default {
 
     img{
     border-radius: 10px;
-    width: 120px;
+    width: 100px;
     transition: all .4s;
     cursor: pointer;
     
