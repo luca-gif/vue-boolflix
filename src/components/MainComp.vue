@@ -1,7 +1,7 @@
 <template>
   <div>
 
-     <h3 class="text-danger px-5 pt-4">Most Popular</h3>
+     <!-- <h3 class="text-danger px-5 pt-4">Most Popular</h3> -->
      <div class="films popular-films py-3 d-flex">
 
     <div v-for="popularFilm in arrayPopularFilms" class="most-popular" :key="popularFilm.id">
@@ -18,36 +18,53 @@
 
   </div>
       
+      
     <div class="films searched-films py-3 d-flex">
       
-      <div v-for="film in arrayFilms" :key="film.id">
-    
-      <show-movies
-      :titolo="film.title"
-      :titoloOriginale="film.original_title"
-      :lingua="film.original_language"
-      :voto="film.vote_average"
-      :image="film.poster_path"
-      />
-    </div>
+        <div v-for="film in arrayFilms" :key="film.id">
+      
+        <show-movies
+        :type="type"
+        :titolo="film.title"
+        :titoloOriginale="film.original_title"
+        :lingua="film.original_language"
+        :voto="film.vote_average"
+        :image="film.poster_path"
+        />
 
-    </div>
+      </div>
 
-       
+      <!-- Ciclo Serie Tv -->
+      <div v-for="serieTv in arrayTv" :key="serieTv.id">
+      
+        <show-movies
+        :type="type"
+        :titoloTv="serieTv.name"
+        :titoloOriginaleTv="serieTv.original_name"
+        :linguaTv="serieTv.original_language"
+        :votoTv="serieTv.vote_average"
+        :imageTv="serieTv.poster_path"
+        />
+
+      </div>
+    </div>
   </div>
+  
 </template>
 
 <script>
-import ShowMovies from './ShowMovies.vue';
 import ShowPopularMovies from './ShowPopularMovies.vue';
+import ShowMovies from './ShowMovies.vue';
 
 export default {
-  components: { ShowMovies, ShowPopularMovies },
+  components: { ShowPopularMovies, ShowMovies },
   name: 'MainComp',
 
    props:{
     arrayFilms: Array,
-    arrayPopularFilms: Array
+    arrayPopularFilms: Array,
+    arrayTv: Array,
+    type: String
   },
 }
 </script>

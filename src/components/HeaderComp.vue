@@ -5,8 +5,9 @@
       <div class="logo"><img src="../assets/img/Boolflix.png" alt=""></div>
 
       <div class="categoria d-flex">
-        <h5>Serie Tv</h5>
-        <h5>Film</h5>
+        <h5 @click="cambioTipo('')">All</h5>
+        <h5 @click="cambioTipo('tv')">Serie Tv</h5>
+        <h5 @click="cambioTipo('movie')">Film</h5>
       </div>
 
       <div class="search w-25 d-flex">
@@ -14,7 +15,6 @@
         <button @click="ricercaValore()" class="btn btn-danger d-inline-block text-black">Search</button>
       </div>
 
-      
     </header>
 </template>
 
@@ -22,16 +22,21 @@
 
 export default {
   name: 'HeaderComp',
-
+  
   data(){
     return{
-      ricerca: ''
+      ricerca: '',
     }
   },
   methods:{
     ricercaValore(){
       this.$emit('elementoCercato', this.ricerca);
       this.ricerca = '';
+    },
+
+    cambioTipo(parametro){
+      this.$emit('passoValore', parametro )
+      console.log(parametro)
     }
   }
 }
@@ -55,7 +60,7 @@ header{
   .categoria{
     color: rgb(201, 201, 201);
     h5{
-      padding: 0 10px;
+      padding: 0 15px;
       cursor: pointer;
     }
   }

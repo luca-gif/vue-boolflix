@@ -2,13 +2,19 @@
   <div>
 
     <div v-if="isLoaded">
-    <header-comp @elementoCercato="valorePassato" />
+    <header-comp @passoValore="type = parametro" @elementoCercato="valorePassato" />
 
            <main-comp
-           :arrayFilms="films"
            :arrayPopularFilms="popularFilms"
-          />
+           :arrayFilms="films"
+           :type="type"
+           />
         
+           <main-comp
+           :arrayTv="tvSeries"
+           :type="type"
+           />
+
     </div>
 
     <div v-else class="loading">
@@ -34,8 +40,10 @@ export default {
 
   data(){
     return{
-      moviesUrl: 'https://api.themoviedb.org/3/search/movie',
       popularMoviesUrl:'https://api.themoviedb.org/3/movie/popular?api_key=83c397b63c322fd6a37d6c5ec3d5f6de',
+
+      moviesUrl: 'https://api.themoviedb.org/3/search/',
+      type: '',
       moviesParams: {
         api_key: '83c397b63c322fd6a37d6c5ec3d5f6de',
         language: 'it-IT',
@@ -43,24 +51,29 @@ export default {
       },
       
       films: [],
+      tvSeries: [],
       popularFilms: [],
       isLoaded: true, //Cambiare in false
-       
     }
   },
   
   methods:{
 
-    /* Chiamata per i film */
+    apiMovies(type){
+          axios.get(this.moviesUrl + type, {
+          params: this.moviesParams
+        } )
+        .then(r =>{
+          if(type === 'movie'){
+            this.films = r.data.results;
+          console.log(this.films)
 
-    apiMovies(){
-      axios.get(this.moviesUrl, {
-        params: this.moviesParams
-      } )
-      .then(r =>{
-        this.films = r.data.results;
-        console.log(this.films)
-      })
+          }else {
+            this.tvSeries = r.data.results;
+          console.log(this.tvSeries)
+          }
+        })
+                
     },
 
     /* Chiamata per i film piu popolari */
@@ -69,15 +82,17 @@ export default {
       axios.get(this.popularMoviesUrl)
       .then(r =>{
         this.popularFilms = r.data.results;
-        console.log(this.popularFilms)
+        //console.log(this.popularFilms)
       })
     },
 
     valorePassato(nomeValore){
       this.moviesParams.query = nomeValore;
-      this.apiMovies();
-      console.log(this.moviesParams.query);
+      this.apiMovies('movie');
+      this.apiMovies('tv');
     },
+
+  
 
     loadIsTrue(){
     this.isLoaded = true

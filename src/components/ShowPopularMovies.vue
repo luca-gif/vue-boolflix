@@ -15,9 +15,11 @@
 
             <h6>{{titolo}}</h6>
             <p>Titolo originale: {{titoloOriginale}}</p>
+
             <p v-if="lingua === 'it'"><img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
             <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
             <p v-else> Lingua: {{lingua}}</p>
+            
             <p>Voto: {{voto}}</p>
 
         </div>
@@ -73,7 +75,6 @@ export default {
 .text{
   color: rgb(186, 186, 186);
   font-size: .7rem;
-
 }
 
 </style>

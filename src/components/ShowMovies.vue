@@ -6,21 +6,21 @@
         <div class="lm-card d-flex align-items-center">
 
           <div class="poster">
-            <img :src="`https://image.tmdb.org/t/p/w200${image}`" alt="">  
+            <img :src="`https://image.tmdb.org/t/p/w200${image || imageTv}`" alt="">  
           </div>
 
-        
-        <div class="text px-4 d-flex flex-column">
+          <div class="text px-4 d-flex flex-column">
 
-            <h6>{{titolo}}</h6>
-            <p>Titolo originale: {{titoloOriginale}}</p>
-            <p v-if="lingua === 'it'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
-            <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
-            <p v-else> Lingua: {{lingua}}</p>
-            <p>Voto: {{voto}}</p>
+              <h6>{{titolo || titoloTv}}</h6>
+              <p>Titolo originale: {{titoloOriginale || titoloOriginaleTv}}</p>
 
-        </div>
+              <p v-if="lingua === 'it'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
+              <p v-else-if="lingua || linguaTv === 'en'|| lingua || linguaTv === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
+              <p v-else> Lingua: {{lingua || linguaTv}}</p>
+              
+              <p>Voto: {{voto || votoTv}}</p>
 
+          </div>
         </div>
     </div>
   </div>
@@ -30,11 +30,19 @@
 export default {
   name: 'ShowMovies',
   props:{
+    type: String,
+    /*  */
     titolo: String,
     titoloOriginale: String,
     lingua: String,
     voto: Number,
-    image: String
+    image: String,
+    /*  */
+    titoloTv: String,
+    titoloOriginaleTv: String,
+    linguaTv: String,
+    votoTv: Number,
+    imageTv: String,
   }
 }
 </script>
@@ -42,13 +50,13 @@ export default {
 <style lang="scss" scoped>
 
 .lm-card{
-  border: 1px solid rgb(180, 180, 180);
-  background-color: black;
-  border-radius: 10px;
-  width: 350px;
-  height: 200px;
-  margin-right: 15px;
-  padding-left: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    background-color: black;
+    border-radius: 10px;
+    width: 350px;
+    height: 200px;
+    margin-right: 15px;
+    padding-left: 10px;
   }
 
   .poster{
@@ -61,7 +69,7 @@ export default {
     
     &:hover{
       scale: 105%;
-  }
+    }
   }
  
 }
@@ -69,7 +77,6 @@ export default {
 .text{
   color: rgb(186, 186, 186);
   font-size: .7rem;
-
 }
 
 </style>
