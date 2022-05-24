@@ -18,8 +18,11 @@
               <p v-else-if="lingua || linguaTv === 'en'|| lingua || linguaTv === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
               <p v-else> Lingua: {{lingua || linguaTv}}</p>
               
-              <p>Voto: {{voto || votoTv}}</p>
-              
+              <div class="stars-rating">
+              <span v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
+              <span v-for="emptyStar in 5 - calcolaVoto()" :key="emptyStar"><i class="fa-regular fa-star"></i></span>
+          
+              </div>
 
           </div>
         </div>
@@ -44,6 +47,12 @@ export default {
     linguaTv: String,
     votoTv: Number,
     imageTv: String,
+  },
+
+  methods:{
+    calcolaVoto(){
+      return Math.round(this.voto / 2 || this.votoTv / 2) 
+    }
   }
 }
 </script>

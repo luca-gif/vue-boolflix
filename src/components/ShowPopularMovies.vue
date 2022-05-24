@@ -18,9 +18,12 @@
               <p v-else-if="lingua === 'en'|| lingua === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
               <p v-else> Lingua: {{lingua}}</p>
               
-              <span v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
+              <div class="stars-rating"> 
+                
+              <span  v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
               <span v-for="emptyStar in 5 - calcolaVoto()" :key="emptyStar"><i class="fa-regular fa-star"></i></span>
-              
+
+              </div>
               
           </div>
         </div>
@@ -39,20 +42,13 @@ export default {
     lingua: String,
     voto: Number,
     image: String
-  },
-
-  data(){
-    return{
-      star: '<i class="fa-solid fa-star"></i>'
-    }
+  
   },
   methods:{
     calcolaVoto(){
       return Math.round(this.voto / 2)
     }
   }
-
-   
 }
 </script>
 
@@ -86,5 +82,6 @@ export default {
   color: rgb(186, 186, 186);
   font-size: .7rem;
 }
+
 
 </style>
