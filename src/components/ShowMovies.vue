@@ -2,11 +2,11 @@
   <div>
 
     <div class="mini-wrapper">
-
         <div class="lm-card d-flex align-items-center">
 
           <div class="poster">
-            <img :src="`https://image.tmdb.org/t/p/w200${image || imageTv}`" :alt="titolo || titoloTv">  
+            <img v-if="image || imageTv" :src="`https://image.tmdb.org/t/p/w200${image || imageTv}`" :alt="titolo || titoloTv">  
+            <img v-else src="../assets/img/img-not-found.webp" alt="img not found">
           </div>
 
           <div class="text px-4 d-flex flex-column">
@@ -19,8 +19,8 @@
               <p v-else> Lingua: {{lingua || linguaTv}}</p>
               
               <div class="stars-rating">
-              <span v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
-              <span v-for="emptyStar in 5 - calcolaVoto()" :key="emptyStar"><i class="fa-regular fa-star"></i></span>
+              <span v-for="(star,index) in calcolaVoto()" :key="`a${index}`"><i class="fa-solid fa-star"></i></span>
+              <span v-for="(emptyStar,index) in 5 - calcolaVoto()" :key="`b${index}`"><i class="fa-regular fa-star"></i></span>
           
               </div>
 

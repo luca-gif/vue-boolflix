@@ -2,7 +2,6 @@
   <div>
 
     <div class="mini-wrapper">
-
         <div class="lm-card d-flex align-items-center">
 
           <div class="poster">
@@ -20,8 +19,8 @@
               
               <div class="stars-rating"> 
                 
-              <span  v-for="star in calcolaVoto()" :key="star"><i class="fa-solid fa-star"></i></span>
-              <span v-for="emptyStar in 5 - calcolaVoto()" :key="emptyStar"><i class="fa-regular fa-star"></i></span>
+              <span  v-for="(star,index) in calcolaVoto()" :key="`c${index}`"><i class="fa-solid fa-star"></i></span>
+              <span v-for="(emptyStar, index) in 5 - calcolaVoto()" :key="`d${index}`"><i class="fa-regular fa-star"></i></span>
 
               </div>
               

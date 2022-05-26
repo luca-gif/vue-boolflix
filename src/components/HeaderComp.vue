@@ -5,9 +5,9 @@
       <div class="logo"><img src="../assets/img/Boolflix.png" alt=""></div>
 
       <div class="categoria d-flex">
-        <h5 @click="cambioTipo('')">All</h5>
-        <h5 @click="cambioTipo('tv')">Serie Tv</h5>
-        <h5 @click="cambioTipo('movie')">Film</h5>
+        <h5 @click="cambioCategoria('')">Home</h5>
+        <h5 @click="cambioCategoria('tv')">Serie Tv</h5>
+        <h5 @click="cambioCategoria('movie')">Film</h5>
       </div>
 
       <div class="search w-25 d-flex">
@@ -34,8 +34,8 @@ export default {
       this.ricerca = '';
     },
 
-    cambioTipo(parametro){
-      this.$emit('passoValore', parametro )
+    cambioCategoria(valoreStr){
+      this.$emit('passoValore', valoreStr );
     }
   }
 }

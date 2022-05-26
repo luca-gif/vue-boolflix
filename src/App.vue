@@ -2,28 +2,35 @@
   <div>
 
     <div v-if="isLoaded">
-    <header-comp @passoValore="passoValore" @elementoCercato="valorePassato" />
+    <header-comp @passoValore="mostraSezioni" @elementoCercato="iniziaRicerca" />
 
+        <div>
+          <h3 v-if="popularFilms.length > 0" class="text-danger px-5">Popular Movies</h3>
            <main-comp
            :arrayPopularFilms="popularFilms"  
            />
+        </div>
 
-           <main-comp v-if="films.length > 0"
+        <div v-if="(type == '' || type == 'movie')">
+          <h3 v-if="films.length > 0" class="text-danger px-5">Films</h3>
+           <main-comp
            :arrayFilms="films"
            />
-        
-           <main-comp v-if="tvSeries.length > 0"
+        </div>
+
+        <div v-if="type == '' || type == 'tv'">
+
+          <h3 v-if="tvSeries.length > 0 " class="text-danger px-5">Serie Tv</h3>
+           <main-comp
            :arrayTv="tvSeries"
            />
+        </div>
 
     </div>
-
 
     <div v-else class="loading">
       <audio autoplay src="./assets/Sound/Netflix-Intro-Sound-Effect.mp3" type="audio/mpeg"></audio>
     </div>
-
-
 
   </div>
 </template>
@@ -54,19 +61,18 @@ export default {
       films: [],
       tvSeries: [],
       popularFilms: [],
-      isLoaded: false, //Cambiare in false
+      isLoaded: true, //Cambiare in false
     }
   },
   
   methods:{
-    passoValore(type){
-      this.type = type;
-      this.apiMovies(type);
+    mostraSezioni(sezioneDaMostrare){
+      this.type = sezioneDaMostrare;
     },
-    apiMovies(type){
+    apiUrl(type){
           axios.get(this.moviesUrl + type, {
           params: this.moviesParams
-        } )
+        })
         .then(r =>{
           if(type === 'movie'){
             this.films = r.data.results;
@@ -89,15 +95,15 @@ export default {
       })
     },
 
-    valorePassato(nomeValore){
-      this.moviesParams.query = nomeValore;
+    iniziaRicerca(filtriRicerca){
+      this.moviesParams.query = filtriRicerca;
       console.log(this.type)
 
       if(this.type === ''){
-        this.apiMovies('movie');
-        this.apiMovies('tv');
+        this.apiUrl('movie');
+        this.apiUrl('tv');
       }else{
-        this.apiMovies(this.type);
+        this.apiUrl(this.type);
       }
     },
  

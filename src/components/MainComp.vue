@@ -2,7 +2,6 @@
   <div>
 
     <div class="films popular-films d-flex">
-
       <div v-for="popularFilm in arrayPopularFilms" class="most-popular" :key="popularFilm.id">
 
         <ShowPopularMovies
@@ -93,6 +92,5 @@ export default {
      ::-webkit-scrollbar-thumb:hover{
       background: hsl(0, 100%, 35%);    
    }
-
-
+   
 </style>
