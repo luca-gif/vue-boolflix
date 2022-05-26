@@ -14,8 +14,9 @@
               <h6>{{titolo || titoloTv}}</h6>
               <p>Titolo originale: {{titoloOriginale || titoloOriginaleTv}}</p>
 
-              <p v-if="lingua === 'it'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
-              <p v-else-if="lingua || linguaTv === 'en'|| lingua || linguaTv === 'uk'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
+              <p v-if="lingua || linguaTv === 'it'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/IT.png"> </p>
+
+              <p v-else-if="lingua || linguaTv === 'en'">Lingua: <img src="https://www.countryflagicons.com/FLAT/32/GB.png"> </p>
               <p v-else> Lingua: {{lingua || linguaTv}}</p>
               
               <div class="stars-rating">

@@ -13,9 +13,7 @@
         />
 
       </div>
-    </div>
-      
-    <div class="films searched-films d-flex">
+
         
         <!-- Ciclo Films -->
         <div v-for="film in arrayFilms" :key="film.id">
@@ -29,9 +27,8 @@
         />
 
        </div>
-    </div>
+ 
       
-    <div class="films searched-Tv d-flex">
       <!-- Ciclo Serie Tv -->
        <div v-for="serieTv in arrayTv" :key="serieTv.id">
       

@@ -1,6 +1,6 @@
 <template>
 
-    <header class="d-flex justify-content-between align-items-center mb-5">
+    <header class="d-flex fixed-top justify-content-between align-items-center">
 
       <div class="logo"><img src="../assets/img/Boolflix.png" alt=""></div>
 

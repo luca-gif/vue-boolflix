@@ -4,22 +4,25 @@
     <div v-if="isLoaded">
     <header-comp @passoValore="mostraSezioni" @elementoCercato="iniziaRicerca" />
 
-        <div>
+    <JumboComponent
+    :arrPopular="popularFilms"
+    />
+
+        <div class="most-popular">
           <h3 v-if="popularFilms.length > 0" class="text-danger px-5">Popular Movies</h3>
            <main-comp
            :arrayPopularFilms="popularFilms"  
            />
         </div>
 
-        <div v-if="(type == '' || type == 'movie')">
+        <div v-if="type == '' || type == 'movie'" class="films">
           <h3 v-if="films.length > 0" class="text-danger px-5">Films</h3>
            <main-comp
            :arrayFilms="films"
            />
         </div>
 
-        <div v-if="type == '' || type == 'tv'">
-
+        <div v-if="type == '' || type == 'tv'" class="tv-series">
           <h3 v-if="tvSeries.length > 0 " class="text-danger px-5">Serie Tv</h3>
            <main-comp
            :arrayTv="tvSeries"
@@ -39,13 +42,15 @@
 import axios from 'axios'
 import HeaderComp from './components/HeaderComp.vue'
 import MainComp from './components/MainComp.vue'
+import JumboComponent from './components/JumboComponent.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderComp,
     MainComp,
-  },
+    JumboComponent
+},
 
   data(){
     return{
@@ -61,7 +66,7 @@ export default {
       films: [],
       tvSeries: [],
       popularFilms: [],
-      isLoaded: true, //Cambiare in false
+      isLoaded: false, //Cambiare in false
     }
   },
   
@@ -131,5 +136,8 @@ export default {
     height: 100vh;
   }
 
-    
+  h3.text-danger{
+    margin-top: 30px;
+  }
+
 </style>
